@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using EvernoteClone.ViewModel;
 using System.Windows;
+using Unity;
 
 namespace EvernoteClone
 {
@@ -13,5 +9,12 @@ namespace EvernoteClone
     /// </summary>
     public partial class App : Application
     {
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            base.OnStartup(e);
+            IUnityContainer container = new UnityContainer();
+            container.RegisterType<ILoginVM, LoginVM>();
+            container.RegisterType<INotesVM, NotesVM>();
+        }
     }
 }
